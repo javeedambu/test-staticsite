@@ -12,7 +12,10 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
       - name: Install NPM dependencies
-        run: npm install remark-cli
-      - name: Build project assets
-        run: npm run build
+        run: npm install remark-cli > output-file.txt
+      - name: Upload static site content
+        uses: actions/upload-artifacts@v3
+        with:
+          name: output-file
+          path: output-file.txt
         
